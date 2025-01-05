@@ -1,0 +1,22 @@
+﻿@model List<Result>
+
+<h1>Otel Sonuçları</h1>
+<table >
+    <thead>
+        <tr>
+            <th>Otel Adı</th>
+            <th>Şehir</th>
+            <th>Puan</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.hotel_name</td>
+                <td>@item.city</td>
+                <td>@item.rating</td>
+            </tr>
+        }
+    </tbody>
+</table>

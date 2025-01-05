@@ -1,0 +1,49 @@
+﻿@model List<ResultSendBoxDTO>
+@{
+    ViewData["Title"] = "SendBox";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="email-left-box">
+    <!-- Sol Taraf -->
+    <a href="/AdminContact/AddSendMessage/" class="btn btn-primary btn-block mb-3">Yeni Mesaj Oluştur</a>
+    @await Html.PartialAsync("SideBarAdminContactPartial")
+
+    <h5 class="mt-4 mb-3">Kategoriler</h5>
+    @await Html.PartialAsync("SideBarAdminCategoryPartial")
+</div>
+
+<div class="email-right-box">
+    <!-- Sağ Taraf -->
+    <div role="toolbar" class="toolbar mb-3">
+        <div class="btn-group">
+            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-dark dropdown-toggle" type="button">
+                Gönderilen Mesajlar
+            </button>
+        </div>
+    </div>
+
+    <!-- Mesaj Listesi -->
+    <div class="email-list">
+        @foreach (var item in Model)
+        {
+                <div class="message">
+                <a href="/AdminContact/MessageDetailsBySendBox/@item.SendMessageID">
+                        <!-- Checkbox ve Star -->
+                        <div class="col-mail col-mail-1">
+                            <div class="email-checkbox">
+                                <input type="checkbox" id="chk@item.Id">
+                                <label for="chk@item.Id"></label>
+                            </div>
+                            <span class="star-toggle ti-star"></span>
+                        </div>
+                        <!-- Mesaj Detayları -->
+                        <div class="col-mail col-mail-2">
+                            <div class="subject"><b>@item.Title</b> - @item.ReceiverName</div>
+                            <div class="date">@(((DateTime)item.Date).ToString("dd-MMM-yyyy"))</div>
+                        </div>
+                    </a>
+                </div>
+        }
+    </div>
+</div>
