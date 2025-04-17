@@ -21,8 +21,8 @@ namespace OteLProjectWebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task< IActionResult> Index(CreateNewUserDTO createNewUserDTO)
-        
+        public async Task<IActionResult> Index(CreateNewUserDTO createNewUserDTO)
+
         {
             if (!ModelState.IsValid)
             {
@@ -31,15 +31,15 @@ namespace OteLProjectWebUI.Controllers
             var appUser = new AppUser()
             {
                 //Bu Alanda Atamalarımızı Gerçekleştirecegiz
-                Name=createNewUserDTO.Ad,
-                Surname=createNewUserDTO.SoyAd,
-                Email=createNewUserDTO.Mail,
-                UserName=createNewUserDTO.UserName,
-                City=createNewUserDTO.Şehir,
-                WorkLocationID=1
-                
+                Name = createNewUserDTO.Ad,
+                Surname = createNewUserDTO.SoyAd,
+                Email = createNewUserDTO.Mail,
+                UserName = createNewUserDTO.UserName,
+                City = createNewUserDTO.Şehir,
+                WorkLocationID = 1
+
             };
-            var result = await _userManager.CreateAsync(appUser,createNewUserDTO.Password!);
+            var result = await _userManager.CreateAsync(appUser, createNewUserDTO.Password!);
             if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Login");

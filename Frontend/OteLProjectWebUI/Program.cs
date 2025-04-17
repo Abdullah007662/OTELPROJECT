@@ -60,6 +60,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     // Not: "/Login/Index", oturum açma iþlemlerinin olduðu sayfa için rota belirler.
 });
 
+
 // Uygulamanýn oluþturulmasý
 var app = builder.Build();
 
@@ -95,6 +96,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Uygulamayý baþlatýr.
 app.Run();

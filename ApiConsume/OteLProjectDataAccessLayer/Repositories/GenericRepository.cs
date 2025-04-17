@@ -23,7 +23,7 @@ namespace OteLProjectDataAccessLayer.Repositories
             _context.SaveChanges();
         }
 
-        public T GetByID(int id)
+        public T GetByID(int id) 
         {
             // Burada İd Göre Bul diyoruz.
             return _context.Set<T>().Find(id)!;
